@@ -1,7 +1,8 @@
 import { Router } from 'express';
 import { IStudentDAO } from '../dao/IStudent.dao';
+import { StudentDAO } from '../dao/Student.dao';
 const StudentRouter:Router = Router();
-var studentDAO:IStudentDAO;
+var studentDAO:IStudentDAO = new StudentDAO();
 StudentRouter.get('/', function(req, res, next) {
   res.json("getting an account?");
 });
@@ -12,6 +13,7 @@ StudentRouter.get('/course/:email', function(request, response, next) {
 });
 
 StudentRouter.get('/universityChoices/:homeSystem', function(request, response, next) {
+  console.log("home system:" + request.params.homeSystem);
   studentDAO.getStudentsByUniversity(request.params['homeSystem']).then(students => { response.json(students)})
 });
 

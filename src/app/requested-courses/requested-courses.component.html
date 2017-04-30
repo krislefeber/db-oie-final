@@ -1,0 +1,12 @@
+<h3>Requested Courses</h3>
+
+<table td-data-table style="min-width:800px">
+  <th td-data-table-column>
+      Requested Courses
+  </th>
+  <tr td-data-table-row *ngFor="let course of courses">
+    <td td-data-table-cell>
+      {{course.name}}
+    <td>
+  </tr>
+</table>

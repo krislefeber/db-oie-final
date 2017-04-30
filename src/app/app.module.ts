@@ -6,10 +6,16 @@ import { HttpModule } from '@angular/http';
 import { CovalentCoreModule } from '@covalent/core';
 import { CovalentLayoutModule } from '@covalent/core';
 import { AppComponent } from './app.component';
+import { RequestedCoursesComponent } from './requested-courses/requested-courses.component';
+import { UniversityOptionsComponent } from './university-options/university-options.component';
+
+import { StudentService } from './services/student.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RequestedCoursesComponent,
+    UniversityOptionsComponent
   ],
   imports: [
     CovalentCoreModule,
@@ -19,7 +25,7 @@ import { AppComponent } from './app.component';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [StudentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

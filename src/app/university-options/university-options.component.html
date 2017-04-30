@@ -1,0 +1,25 @@
+<p>
+  university-options works!
+</p>
+<h3>University Choices</h3>
+<md-select mdInput placeholder="Select Home Campus" [(ngModel)]="selectedUniversity" (change)="updateStudents()">
+  <md-option value="uw">UW</md-option>
+  <md-option value="hessen">Hessen</md-option>
+</md-select>
+<table td-data-table style="min-width:300px">
+  <th td-data-table-column [sortable]="true" [active]="true">
+    Name
+  </th>
+  <th td-data-table-column [sortable]="true" [active]="true">
+    Email
+  </th>
+  <tr td-data-table-row *ngFor="let student of students">
+    <td td-data-table-cell>
+      {{student.name}}
+    </td>
+    <td td-data-table-cell>
+      {{student.email}}
+    </td>
+  </tr>
+</table>
+<md-icon>thumb_down</md-icon>
