@@ -21,7 +21,10 @@ api.use('/student', StudentRouter);
 api.get('/test', function(req, res) {
   res.json("Hello World 10100");
 });
-
+app.use('/', express.static('./dist/client'));
+app.get('/', function(req, res) {
+  res.sendfile('./dist/client');
+})
 
 
 export {app};

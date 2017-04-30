@@ -7,8 +7,8 @@
     "setup": "npm install -g @angular/cli nodemon ts-node typings concurrently && typings install && npm install",
     "start": "concurrently \"nodemon -e ts,js,json --watch server --exec ts-node server/bin/www.ts\" \"ng serve --proxy-config proxy.conf.json &\"",
     "build": "npm run build:app && npm run build:server",
-    "build:app": "ng build --prod --output-path=dist/client",
-    "build:server": "tsc -w -p ./server",
+    "build:app": "ng build --prod --aot --output-path=dist/client",
+    "build:server": "tsc -p ./server",
     "lint": "ng lint",
     "build:run": "node dist/server/bin/www.js",
     "build:server:live": "sudo nodemon"

@@ -5,7 +5,7 @@
     "noImplicitAny": false,
     "sourceMap": false,
     "typeRoots": ["../node_modules/@types", "./typings/index.d.ts"],
-    "outDir": "../dist/server",
+    "outDir": "../dist/",
     "declaration": true
   },
   "watch":false
