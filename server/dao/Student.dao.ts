@@ -32,7 +32,7 @@ export class StudentDAO implements IStudentDAO {
   */
   getStudentsByTerm(universitySystem: string): Promise<Student[]> {
     return new Promise<Student[]>(function(resolve, error) {
-      let sql = "SELECT name, FormResponses.email, u1.response as home, FormResponses.response as Term FROM FormResponses INNER JOIN Users ON FormResponses.email=Users.email INNER JOIN(SELECT FormResponses.response as response, FormResponses.email FROM FormResponses INNER JOIN FormQuestions ON FormResponses.form_id = FormQuestions.form_id AND FormResponses.question_name = FormQuestions.question_name WHERE FormResponses.question_name = 'Home university') AS u1 ON u1.email = FormResponses.email WHERE question_name='Term' AND u1.response LIKE '" + universitySystem +"%'"
+      let sql = "SELECT name, FormResponses.email, u1.response as home, FormResponses.response as Term FROM FormResponses INNER JOIN Users ON FormResponses.email=Users.email INNER JOIN(SELECT FormResponses.response as response, FormResponses.email FROM FormResponses INNER JOIN FormQuestions ON FormResponses.form_id = FormQuestions.form_id AND FormResponses.question_name = FormQuestions.question_name WHERE FormResponses.question_name = 'Home university') AS u1 ON u1.email = FormResponses.email WHERE question_name='Term' AND u1.response LIKE '" + universitySystem +"%' ORDER BY Term"
       DAOHelper.executeQuery(sql).then(function(result) {
         //console.log(result);
         let students: Student[] = [];
