@@ -13,7 +13,7 @@ export class StudentService {
   getStudentCourses(email:string):Promise<Course[]> {
     let self = this;
     return new Promise<Course[]>(function(resolve, error) {
-      self.http.get("/api/courses/" + email).toPromise().then(function(result:Response) {
+      self.http.get("/api/student/course/" + email).toPromise().then(function(result:Response) {
         resolve(result.json());
       });
     });
@@ -22,7 +22,15 @@ export class StudentService {
     let self = this;
     return new Promise<Student[]>(function(resolve, error) {
       self.http.get("/api/student/universityChoices/" + system).toPromise().then(function(result:Response) {
-        console.info(result);
+        resolve(result.json());
+      });
+    });
+  }
+  getSelectedTerm(system:string):Promise<Student[]> {
+    let self = this;
+    return new Promise<Student[]>(function(resolve, error) {
+      self.http.get("/api/student/applicationDates/" + system).toPromise().then(function(result:Response) {
+        console.log(result.json());
         resolve(result.json());
       });
     });

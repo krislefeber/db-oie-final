@@ -1,0 +1,3 @@
+.selected-student:focus {
+  color: yellow;
+}

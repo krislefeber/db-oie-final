@@ -1,7 +1,7 @@
-<div style="margin-top:20px">
+<div style="margin-top:25px">
 
 </div>
-<md-select mdInput placeholder="Select Home Campus" [(ngModel)]="selectedUniversity" (change)="updateStudents()">
+<md-select mdInput placeholder="Select Home Campus" [(ngModel)]="selectedUniversity" (change)="updateStudents(selectedUniversity)">
   <md-option value="uw">UW</md-option>
   <md-option value="hessen">Hessen</md-option>
 </md-select>
@@ -11,8 +11,6 @@
 <br>
 <div style="display:inline-flex">
   <table td-data-table style="width:500px; min-width: 50%;">
-    <th td-data-table-column>
-    </th>
     <th td-data-table-column [sortable]="true" [active]="true">
       Name
     </th>
@@ -20,28 +18,23 @@
       Email
     </th>
     <th td-data-table-column [sortable]="true" [active]="true">
-      Choice 1
+      Semester Applied
     </th>
     <th td-data-table-column [sortable]="true" [active]="true">
-      Choice 2
+      Home University
     </th>
     <tr td-data-table-row *ngFor="let student of filteredSearch(); let i = index;">
-      <td>
-        <button class="selected-student" md-raised-button (click)="selectedStudent = student">View Classes
-      </button></td>
       <td td-data-table-cell> {{student.name}}
       </td>
       <td td-data-table-cell>
         {{student.email}}
       </td>
       <td td-data-table-cell>
-        {{student.preferredUniversities[0]}}
+        {{student.semesterApplied}}
       </td>
       <td td-data-table-cell>
-        {{student.preferredUniversities[1]}}
+        {{student.homeUniveristy}}
       </td>
     </tr>
   </table>
 </div>
-<app-requested-courses *ngIf="selectedStudent!= undefined" [(email)]="selectedStudent.email">
-</app-requested-courses>

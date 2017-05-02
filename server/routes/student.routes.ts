@@ -17,7 +17,7 @@ StudentRouter.get('/universityChoices/:homeSystem', function(request, response, 
   studentDAO.getStudentsByUniversity(request.params['homeSystem']).then(students => { response.json(students)})
 });
 
-StudentRouter.get('/applicationDates:homeSystem', function(request, response, next) {
+StudentRouter.get('/applicationDates/:homeSystem', function(request, response, next) {
   studentDAO.getStudentsByTerm(request.params['homeSystem']).then(students => {response.json(students)});
 });
 

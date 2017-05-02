@@ -6,26 +6,30 @@ import { Student, Course, StudentService } from '../services/student.service';
   styleUrls: ['./requested-courses.component.css']
 })
 export class RequestedCoursesComponent implements OnInit {
-  @Input()
-  _courses: Course[];
+  private _email: string;
   @Output()
-  coursesChange = new EventEmitter<Course[]>();
+  emailChange = new EventEmitter<string>();
+  courses: Course[];
 
-  constructor() { }
+  constructor(private studentService: StudentService) { }
 
-  ngOnInit() {
-    this.courses = [
-      { id: 1, name: 'course 1' },
-      { id: 1, name: 'course 2' },
-      { id: 1, name: 'course 3' },
-    ];
+  set email(email: string) {
+    this._email = email;
+    this.getCourses();
+    this.emailChange.emit(this._email);
   }
   @Input()
-  get courses(): Course[] {
-    return this._courses;
+  get email() {
+    return this._email;
   }
-  set courses(courses: Course[]) {
-    this._courses = courses;
-    this.coursesChange.emit(this._courses);
+  ngOnInit() {
+    this.getCourses();
   }
+  getCourses() {
+    let self = this;
+    this.studentService.getStudentCourses(this.email).then(function(courses) {
+      self.courses = courses;
+    });
+  }
+
 }

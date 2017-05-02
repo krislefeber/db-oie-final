@@ -10,12 +10,14 @@ import { RequestedCoursesComponent } from './requested-courses/requested-courses
 import { UniversityOptionsComponent } from './university-options/university-options.component';
 
 import { StudentService } from './services/student.service';
+import { SelectedTermComponent } from './selected-term/selected-term.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RequestedCoursesComponent,
-    UniversityOptionsComponent
+    UniversityOptionsComponent,
+    SelectedTermComponent
   ],
   imports: [
     CovalentCoreModule,

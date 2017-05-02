@@ -1,3 +1,12 @@
-<button md-raised-button color="primary" type="button" name="button">Click me</button>
-<app-university-options>
-</app-university-options>
+<md-tab-group md-stretch-tabs>
+  <md-tab>
+    <ng-template md-tab-label>Problem 1, 2, 3</ng-template>
+    <app-university-options>
+    </app-university-options>
+  </md-tab>
+  <md-tab>
+    <ng-template md-tab-label>Problem 4</ng-template>
+    <app-selected-term>
+    </app-selected-term>
+  </md-tab>
+</md-tab-group>

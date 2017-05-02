@@ -14,6 +14,7 @@ export class DAOHelper {
     let connection = DAOHelper.connectToDatabase();
     return new Promise<RowDataPacket[][]>(function(resolve, error) {
       let result = connection.query(query, function(error, result:any) {
+        console.log(error);
         resolve(result);
         connection.end();
       });
